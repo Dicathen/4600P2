@@ -1,6 +1,6 @@
 # Project Files CSCE 4600
 [![golangci-lint](https://github.com/Dicathen/CSCE4600/actions/workflows/golangci-lint.yml/badge.svg?branch=main)](https://github.com/Dicathen/CSCE4600/actions/workflows/golangci-lint.yml)
-![Coverage](https://img.shields.io/badge/Coverage-76.7%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-76.5%25-brightgreen)
 
 ## Operating Systems
 
