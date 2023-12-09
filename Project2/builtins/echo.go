@@ -14,21 +14,20 @@ func Echo(args ...string) error {
 		//print files in current directory
 
 		//get current directory
-		wd, err := os.Getwd()
-		if err != nil {
+		if wd, err := os.Getwd(); err == nil {
+			//get files in current directory
+			files, err := os.ReadDir(wd)
+			if err != nil {
+				return err
+			}
+			//print files in current directory in a single line
+			for _, file := range files {
+				fmt.Print(file.Name() + " ")
+			}
+			fmt.Println()
+		} else {
 			return err
 		}
-		//get files in current directory
-		files, err := os.ReadDir(wd)
-		if err != nil {
-			return err
-		}
-
-		//print files in current directory in a single line
-		for _, file := range files {
-			fmt.Print(file.Name() + " ")
-		}
-		fmt.Println()
 
 		return nil
 	}
