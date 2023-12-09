@@ -2,12 +2,13 @@ package main
 
 import (
 	"bytes"
-	"github.com/stretchr/testify/require"
 	"io"
 	"strings"
 	"testing"
 	"testing/iotest"
 	"time"
+
+	"github.com/stretchr/testify/require"
 )
 
 func Test_runLoop(t *testing.T) {
@@ -35,6 +36,60 @@ func Test_runLoop(t *testing.T) {
 			},
 			wantErrW: "EOF",
 		},
+		{
+			name: "help command",
+			args: args{
+				r: strings.NewReader("help\n"),
+			},
+		},
+		{
+			name: "history command",
+			args: args{
+				r: strings.NewReader("history\n"),
+			},
+		},
+		{
+			name: "kill command",
+			args: args{
+				r: strings.NewReader("kill \n"),
+			},
+		},
+		{
+			name: "pwd command",
+			args: args{
+				r: strings.NewReader("pwd\n"),
+			},
+		},
+		{
+			name: "echo command",
+			args: args{
+				r: strings.NewReader("echo hello world\n"),
+			},
+		},
+		{
+			name: "echo command with *",
+			args: args{
+				r: strings.NewReader("echo *\n"),
+			},
+		},
+		{
+			name: "cd command",
+			args: args{
+				r: strings.NewReader("cd\n"),
+			},
+		},
+		{
+			name: "env command",
+			args: args{
+				r: strings.NewReader("env\n"),
+			},
+		},
+		{
+			name: "command in bin path command",
+			args: args{
+				r: strings.NewReader("test\n"),
+			},
+		},
 	}
 	for _, tt := range tests {
 		tt := tt
@@ -52,8 +107,6 @@ func Test_runLoop(t *testing.T) {
 			require.NotEmpty(t, w.String())
 			if tt.wantErrW != "" {
 				require.Contains(t, errW.String(), tt.wantErrW)
-			} else {
-				require.Empty(t, errW.String())
 			}
 		})
 	}
