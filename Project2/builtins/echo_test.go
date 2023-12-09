@@ -17,15 +17,18 @@ func TestEcho(t *testing.T) {
 		wantErr error
 	}{
 		{
-			name: "no args should print newline",
+			name:    "no args should print newline",
+			wantErr: nil,
 		},
 		{
-			name: "* arg should print files in current directory",
-			args: args{args: []string{"*"}},
+			name:    "* arg should print files in current directory",
+			args:    args{args: []string{"*"}},
+			wantErr: nil,
 		},
 		{
-			name: "args should print args",
-			args: args{args: []string{"abc", "def"}},
+			name:    "args should print args",
+			args:    args{args: []string{"abc", "def"}},
+			wantErr: nil,
 		},
 	}
 	for _, tt := range tests {
