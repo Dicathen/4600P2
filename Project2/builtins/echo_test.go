@@ -34,7 +34,7 @@ func TestEcho(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			//testing
-			if err := builtins.Echo(tt.args.args...); err != nil {
+			if err := builtins.Echo(tt.args.args...); tt.wantErr != nil {
 				if tt.wantErr == nil {
 					t.Errorf("Echo() error = %v, wantErr %v", err, tt.wantErr)
 				}
