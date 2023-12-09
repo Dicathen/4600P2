@@ -25,10 +25,7 @@ func Echo(args ...string) error {
 				fmt.Print(file.Name() + " ")
 			}
 			fmt.Println()
-		} else {
-			return err
 		}
-
 		return nil
 	}
 	fmt.Println(strings.Join(args, " "))
