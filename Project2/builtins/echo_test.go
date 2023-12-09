@@ -1,6 +1,7 @@
 package builtins_test
 
 import (
+	"os"
 	"testing"
 
 	"github.com/Dicathen/CSCE4600/Project2/builtins"
@@ -34,6 +35,8 @@ func TestEcho(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			//testing
+			os.Chdir(t.TempDir())
+			os.Create("test.txt")
 			if err := builtins.Echo(tt.args.args...); tt.wantErr != nil {
 				if tt.wantErr == nil {
 					t.Errorf("Echo() error = %v, wantErr %v", err, tt.wantErr)
