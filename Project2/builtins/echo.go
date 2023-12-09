@@ -15,6 +15,9 @@ func Echo(args ...string) error {
 
 		//get current directory
 		wd, err := os.Getwd()
+		if err != nil {
+			return err
+		}
 		//get files in current directory
 		files, err := os.ReadDir(wd)
 		if err != nil {
