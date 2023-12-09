@@ -1,6 +1,6 @@
 # Project 2: Shell Builtins
 [![golangci-lint](https://github.com/Dicathen/4600P2/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/Dicathen/4600P2/actions/workflows/golangci-lint.yml)
-![Coverage](https://img.shields.io/badge/Coverage-75.8%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-74.8%25-brightgreen)
 
 ## Description
 
