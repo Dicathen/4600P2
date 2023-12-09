@@ -15,6 +15,7 @@ func Help(args ...string) error {
 		fmt.Println("pwd: print working directory")
 		fmt.Println("kill: kill process")
 		fmt.Println("history: print history")
+		fmt.Println("env: print environment variables")
 		return nil
 	default:
 		return errors.New("help: expected zero arguments")
