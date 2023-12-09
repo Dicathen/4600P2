@@ -35,8 +35,21 @@ func TestEcho(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			//testing
-			os.Chdir(t.TempDir())
-			os.Create("test.txt")
+			//change directory to temp directory
+			tmp := t.TempDir()
+			if err := os.Chdir(tmp); err != nil {
+				t.Fatalf("failed to change directory: %v", err)
+			}
+			//create a temp file
+			f, err := os.Create("test.txt")
+			if err != nil {
+				t.Fatalf("failed to create file: %v", err)
+			}
+			//close the file
+			if err := f.Close(); err != nil {
+				t.Fatalf("failed to close file: %v", err)
+			}
+
 			if err := builtins.Echo(tt.args.args...); tt.wantErr != nil {
 				if tt.wantErr == nil {
 					t.Errorf("Echo() error = %v, wantErr %v", err, tt.wantErr)
