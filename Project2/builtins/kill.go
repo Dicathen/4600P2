@@ -14,6 +14,9 @@ func Kill(args ...string) error {
 	if err != nil {
 		return err
 	}
-	syscall.Kill(pid, syscall.SIGTERM)
+	err = syscall.Kill(pid, syscall.SIGTERM)
+	if err != nil {
+		return err
+	}
 	return nil
 }
