@@ -28,6 +28,9 @@ func TestHistory(t *testing.T) {
 		},
 	}
 	for _, tt := range tests {
+		if tt.name == "no args should print history" {
+			builtins.SetHistoryList("history")
+		}
 		t.Run(tt.name, func(t *testing.T) {
 			//testing
 			if err := builtins.History(tt.args.args...); tt.wantErr != nil {

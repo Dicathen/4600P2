@@ -22,6 +22,16 @@ func TestKill(t *testing.T) {
 			args:    args{args: []string{"abc", "def"}},
 			wantErr: errors.New("kill: expected one argument"),
 		},
+		{
+			name:    "error no args",
+			args:    args{args: []string{}},
+			wantErr: errors.New("expected: kill <pid>"),
+		},
+		{
+			name:    "correct args",
+			args:    args{args: []string{"1234567890"}},
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
