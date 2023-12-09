@@ -67,6 +67,9 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 	// Remove trailing spaces.
 	input = strings.TrimSpace(input)
 
+	//append to historyList
+	builtins.SetHistoryList(input)
+
 	// Split the input separate the command name and the command arguments.
 	args := strings.Split(input, " ")
 	name, args := args[0], args[1:]
@@ -86,6 +89,8 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 		return builtins.Help(args...)
 	case "kill":
 		return builtins.Kill(args...)
+	case "history":
+		return builtins.History(args...)
 	case "exit":
 		exit <- struct{}{}
 		return nil
