@@ -3,7 +3,6 @@ package builtins
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -21,7 +20,7 @@ func Echo(args ...string) error {
 		}
 
 		//get files in current directory
-		files, err := ioutil.ReadDir(wd)
+		files, err := os.ReadDir(wd)
 		if err != nil {
 			return err
 		}
