@@ -84,6 +84,8 @@ func handleInput(w io.Writer, input string, exit chan<- struct{}) error {
 		return builtins.Echo(args...)
 	case "help":
 		return builtins.Help(args...)
+	case "kill":
+		return builtins.Kill(args...)
 	case "exit":
 		exit <- struct{}{}
 		return nil
